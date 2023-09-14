@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Tic Tac Toe</title>
+<audio id="cellSound" src="cell.wav"></audio>
+<audio id="restartSound" src="restart.wav"></audio>
+
+</head>
+<body>
+    <!-- Container for the Tic Tac Toe game -->
+    <div class="container">
+        <!-- Game title and content -->
+        <div class="game">
+            <!-- Title of the game -->
+            <h1>Tic Tac Toe</h1>
+            <!-- Game board -->
+            <div class="board">
+                <!-- Individual cells for the game grid -->
+                <!-- Each cell has an 'onclick' attribute to trigger 'makeMove(this)' function when clicked -->
+                <div class="cell" onclick="makeMove(this)"></div>
+                <div class="cell" onclick="makeMove(this)"></div>
+                <div class="cell" onclick="makeMove(this)"></div>
+                <div class="cell" onclick="makeMove(this)"></div>
+                <div class="cell" onclick="makeMove(this)"></div>
+                <div class="cell" onclick="makeMove(this)"></div>
+                <div class="cell" onclick="makeMove(this)"></div>
+                <div class="cell" onclick="makeMove(this)"></div>
+                <div class="cell" onclick="makeMove(this)"></div>
+            </div>
+            <!-- Element to display whose turn it is -->
+            <div id="turn">Player X's turn</div>
+            <!-- Button to restart the game -->
+            <button id="restart-button">Restart Game</button>
+        </div>
+    </div>
+    <!-- Include the JavaScript file for game functionality -->
+    <script src="script.js"></script>
+</body>
+</html>
