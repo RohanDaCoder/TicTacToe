@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Tic Tac Toe</title>
-<audio id="cellSound" src="cell.wav"></audio>
-<audio id="restartSound" src="restart.wav"></audio>
-
 </head>
 <body>
+    <!-- Audio elements for sound effects -->
+    <audio id="cellSound" src="cell.wav"></audio>
+    <audio id="restartSound" src="restart.wav"></audio>
+    <audio id="winSound" src="win.wav"></audio> <!-- Added win sound -->
+
     <!-- Container for the Tic Tac Toe game -->
     <div class="container">
         <!-- Game title and content -->
@@ -36,7 +38,5 @@
             <button id="restart-button">Restart Game</button>
         </div>
     </div>
-    <!-- Include the JavaScript file for game functionality -->
-    <script src="script.js"></script>
 </body>
 </html>
