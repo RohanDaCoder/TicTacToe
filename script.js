@@ -9,10 +9,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const cells = document.querySelectorAll('.cell');
 
     // Create an Audio element for the cell click sound
-    const cellSound = new Audio('./sounds/cell.wav');
+    const cellSound = new Audio('./cell.wav');
 
     // Create an Audio element for the restart sound
-    const restartSound = new Audio('./sounds/restart.wav');
+    const restartSound = new Audio('./restart.wav');
 
     // Function to handle a player's move when a cell is clicked
     function makeMove(event) {
