@@ -1,41 +1,41 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Tic Tac Toe</title>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Audio elements for sound effects -->
     <audio id="cellSound" src="assets/sound/cell.wav"></audio>
     <audio id="restartSound" src="assets/sound/restart.wav"></audio>
-    <audio id="winSound" src="assets/sound/win.wav"></audio> 
+    <audio id="winSound" src="assets/sound/win.wav"></audio>
     <!-- Container for the Tic Tac Toe game -->
     <div class="container">
-        <!-- Game title and content -->
-        <div class="game">
-            <!-- Title of the game -->
-            <h1>Tic Tac Toe</h1>
-            <!-- Game board -->
-            <div class="board">
-                <!-- Individual cells for the game grid -->
-                <!-- Each cell has an 'onclick' attribute to trigger 'makeMove(this)' function when clicked -->
-                <div class="cell" onclick="makeMove(this)"></div>
-                <div class="cell" onclick="makeMove(this)"></div>
-                <div class="cell" onclick="makeMove(this)"></div>
-                <div class="cell" onclick="makeMove(this)"></div>
-                <div class="cell" onclick="makeMove(this)"></div>
-                <div class="cell" onclick="makeMove(this)"></div>
-                <div class="cell" onclick="makeMove(this)"></div>
-                <div class="cell" onclick="makeMove(this)"></div>
-                <div class="cell" onclick="makeMove(this)"></div>
-            </div>
-            <!-- Element to display whose turn it is -->
-            <div id="turn">Player X's turn</div>
-            <!-- Button to restart the game -->
-            <button id="restart-button">Restart Game</button>
+      <!-- Game title and content -->
+      <div class="game">
+        <!-- Title of the game -->
+        <h1>Tic Tac Toe</h1>
+        <!-- Game board -->
+        <div class="board">
+          <!-- Individual cells for the game grid -->
+          <!-- Each cell has an 'onclick' attribute to trigger 'makeMove(this)' function when clicked -->
+          <div class="cell" onclick="makeMove(this)"></div>
+          <div class="cell" onclick="makeMove(this)"></div>
+          <div class="cell" onclick="makeMove(this)"></div>
+          <div class="cell" onclick="makeMove(this)"></div>
+          <div class="cell" onclick="makeMove(this)"></div>
+          <div class="cell" onclick="makeMove(this)"></div>
+          <div class="cell" onclick="makeMove(this)"></div>
+          <div class="cell" onclick="makeMove(this)"></div>
+          <div class="cell" onclick="makeMove(this)"></div>
         </div>
+        <!-- Element to display whose turn it is -->
+        <div id="turn">Player X's turn</div>
+        <!-- Button to restart the game -->
+        <button id="restart-button">Restart Game</button>
+      </div>
     </div>
-</body>
+  </body>
 </html>
