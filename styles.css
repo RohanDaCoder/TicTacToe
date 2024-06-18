@@ -15,26 +15,25 @@ body {
     font-weight: bold;
     cursor: pointer;
     border: 2px solid #444;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s ease; /* Adding ease transition */
     font-family: 'Space Mono', monospace;
-    background-color: #333; /* Default background color */
 }
 
-.cell:hover:not(.winner):not(.draw) {
-    background-color: #555; /* Hover color if not winner or draw */
+.cell:hover {
+    background-color: #333; /* Adjust hover color as needed */
 }
 
 .cell.active {
-    background-color: #333; /* Keep active color same as default */
+    background-color: #333; /* Adjust active color as needed */
 }
 
-.cell.winner {
-    background-color: #10b981; /* Green color for winner */
+.winner {
+    background-color: #10b981;
     color: white;
 }
 
-.cell.draw {
-    background-color: #e3342f; /* Red color for draw */
+.draw {
+    background-color: #e3342f;
     color: white;
 }
 
@@ -56,16 +55,22 @@ body {
     90% { transform: translate(1px, 2px) rotate(0deg); }
     100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
+
+.text-white {
+    color: white;
+}
+
+.bg-black {
+    background-color: #000;
+}
+
 .btn {
-    padding: 0.5rem 1rem; /* Ensure padding matches your design */
+    padding: 0.5rem 1rem;
     border-radius: 0.25rem;
     font-family: 'Space Mono', monospace;
-    transition: background-color 0.3s;
-    background-color: #fff; /* Ensure background color matches your design */
-    color: #000; /* Ensure text color matches your design */
-    border: 1px solid #000; /* Ensure border matches your design */
+    transition: background-color 0.3s ease; /* Adding ease transition */
 }
 
 .btn:hover {
-    background-color: #555; /* Ensure hover color matches your design */
+    background-color: #555; /* Adjust hover color as needed */
 }
