@@ -53,7 +53,7 @@ $(document).ready(function() {
     if (!board.includes('')) {
       gameActive = false;
       $('#message').text('Game is a draw!');
-      $('#game-board').addClass('shake');
+      $('.cell').addClass('draw'); // Make all cells red
       playSound(drawSound);
       return false;
     }
@@ -88,17 +88,15 @@ $(document).ready(function() {
   });
 
   $('#reset').click(function() {
-    // Check if all cells are already empty
-    if (board.every(cell => cell === '')) {
-      return; // Exit function if game is already reset
+    if (board.every(cell => cell === '')) { // Check if all cells are already empty
+      return;
     }
-
     board = ['', '', '', '', '', '', '', '', ''];
     currentPlayer = 'X';
     gameActive = true;
     $('#turn').text(`Player ${currentPlayer}'s turn`);
     $('#message').text('');
-    $('.cell').text('').removeClass('winner');
+    $('.cell').text('').removeClass('winner draw');
     $('#game-board').removeClass('shake');
     playSound(restartSound);
   });
