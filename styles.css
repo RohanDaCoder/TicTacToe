@@ -17,23 +17,24 @@ body {
     border: 2px solid #444;
     transition: background-color 0.3s;
     font-family: 'Space Mono', monospace;
+    background-color: #333; /* Default background color */
 }
 
-.cell:hover {
-    background-color: #333;
+.cell:hover:not(.winner):not(.draw) {
+    background-color: #555; /* Hover color if not winner or draw */
 }
 
 .cell.active {
-    background-color: #333;
+    background-color: #333; /* Keep active color same as default */
 }
 
-.winner {
-  background-color: #10b981;
-  color: white;
+.cell.winner {
+    background-color: #10b981; /* Green color for winner */
+    color: white;
 }
 
-.draw {
-    background-color: #e3342f;
+.cell.draw {
+    background-color: #e3342f; /* Red color for draw */
     color: white;
 }
 
@@ -55,22 +56,16 @@ body {
     90% { transform: translate(1px, 2px) rotate(0deg); }
     100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
-
-.text-white {
-    color: white;
-}
-
-.bg-black {
-    background-color: #000;
-}
-
 .btn {
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 1rem; /* Ensure padding matches your design */
     border-radius: 0.25rem;
     font-family: 'Space Mono', monospace;
     transition: background-color 0.3s;
+    background-color: #fff; /* Ensure background color matches your design */
+    color: #000; /* Ensure text color matches your design */
+    border: 1px solid #000; /* Ensure border matches your design */
 }
 
 .btn:hover {
-    background-color: #555;
+    background-color: #555; /* Ensure hover color matches your design */
 }
