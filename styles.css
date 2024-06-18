@@ -15,12 +15,12 @@ body {
     font-weight: bold;
     cursor: pointer;
     border: 2px solid #444;
-    transition: background-color 0.3s ease; /* Adding ease transition */
+    transition: all 0.3s ease; /* Adding ease transition */
     font-family: 'Space Mono', monospace;
 }
 
-.cell:hover {
-    background-color: #333; /* Adjust hover color as needed */
+.cell:not(.winner):not(.draw):hover {
+    background-color: #333; /* Only apply hover color if not winner or draw */
 }
 
 .cell.active {
@@ -68,7 +68,7 @@ body {
     padding: 0.5rem 1rem;
     border-radius: 0.25rem;
     font-family: 'Space Mono', monospace;
-    transition: background-color 0.3s ease; /* Adding ease transition */
+    transition: all 0.3s ease; /* Adding ease transition */
 }
 
 .btn:hover {
