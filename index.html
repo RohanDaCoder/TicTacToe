@@ -1,41 +1,39 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic Tac Toe</title>
-  </head>
-  <body>
-    <!-- Audio elements for sound effects -->
-    <audio id="cellSound" src="assets/sound/cell.wav"></audio>
-    <audio id="restartSound" src="assets/sound/restart.wav"></audio>
-    <audio id="winSound" src="assets/sound/win.wav"></audio>
-    <!-- Container for the Tic Tac Toe game -->
-    <div class="container">
-      <!-- Game title and content -->
-      <div class="game">
-        <!-- Title of the game -->
-        <h1>Tic Tac Toe</h1>
-        <!-- Game board -->
-        <div class="board">
-          <!-- Individual cells for the game grid -->
-          <!-- Each cell has an 'onclick' attribute to trigger 'makeMove(this)' function when clicked -->
-          <div class="cell" onclick="makeMove(this)"></div>
-          <div class="cell" onclick="makeMove(this)"></div>
-          <div class="cell" onclick="makeMove(this)"></div>
-          <div class="cell" onclick="makeMove(this)"></div>
-          <div class="cell" onclick="makeMove(this)"></div>
-          <div class="cell" onclick="makeMove(this)"></div>
-          <div class="cell" onclick="makeMove(this)"></div>
-          <div class="cell" onclick="makeMove(this)"></div>
-          <div class="cell" onclick="makeMove(this)"></div>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&family=Space+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="flex items-center justify-center h-screen bg-gray-900">
+    <div>
+        <h1 class="text-4xl font-bold text-center text-white mb-6">Tic Tac Toe</h1>
+        <div id="turn" class="text-center text-white mb-4 text-2xl">Player X's turn</div>
+        <div id="game-board" class="grid grid-cols-3 gap-2 mb-4">
+            <div class="cell bg-gray-800 text-white"></div>
+            <div class="cell bg-gray-800 text-white"></div>
+            <div class="cell bg-gray-800 text-white"></div>
+            <div class="cell bg-gray-800 text-white"></div>
+            <div class="cell bg-gray-800 text-white"></div>
+            <div class="cell bg-gray-800 text-white"></div>
+            <div class="cell bg-gray-800 text-white"></div>
+            <div class="cell bg-gray-800 text-white"></div>
+            <div class="cell bg-gray-800 text-white"></div>
         </div>
-        <!-- Element to display whose turn it is -->
-        <div id="turn">Player X's turn</div>
-        <!-- Button to restart the game -->
-        <button id="restart-button">Restart Game</button>
-      </div>
+        <div id="message" class="text-center text-white mb-4 text-2xl"></div>
+        <button id="reset" class="btn bg-white text-black">Reset Game</button>
     </div>
-  </body>
+
+    <!-- Sound effects -->
+    <audio id="win-sound" src="/assets/sounds/win.wav"></audio>
+    <audio id="restart-sound" src="/assets/sounds/restart.wav"></audio>
+    <audio id="cell-sound" src="/assets/sounds/cell.wav"></audio>
+    <audio id="draw-sound" src="/assets/sounds/draw.wav"></audio>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js"></script>
+</body>
 </html>
