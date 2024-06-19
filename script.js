@@ -56,7 +56,6 @@ $(document).ready(function() {
     if (!board.includes('')) {
       gameActive = false;
       $('#message').text('Game is a draw!');
-      $('#game-board').addClass('shake');
       $('.cell').addClass('draw');
       playSound(drawSound);
       return false;
@@ -98,15 +97,17 @@ $(document).ready(function() {
     board = ['', '', '', '', '', '', '', '', ''];
     currentPlayer = 'X';
     gameActive = true;
-    $('#turn').text(`Player ${currentPlayer}'s turn`);
-    $('#message').text('');
     $('.cell').text('').removeClass('winner draw');
-    $('#game-board').removeClass('shake');
+    $('#message').text('');
+    $('#turn').text(`Player ${currentPlayer}'s turn`);
     playSound(restartSound);
   });
 
   $('#mute-button').click(function() {
     isMuted = !isMuted;
-    $('#mute-icon').attr('src', isMuted ? '/assets/svg/muted.svg' : '/assets/svg/unmute.svg');
+    const iconSrc = isMuted ?
+      'https://github.com/RohanDaCoder/TicTacToe/raw/main/assets/svg/muted.svg' :
+      'https://github.com/RohanDaCoder/TicTacToe/raw/main/assets/svg/unmute.svg';
+    $('#mute-icon').attr('src', iconSrc);
   });
 });
