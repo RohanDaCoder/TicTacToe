@@ -56,7 +56,7 @@ $(document).ready(function() {
     if (!board.includes('')) {
       gameActive = false;
       $('#message').text('Game is a draw!');
-      $('.cell').addClass('draw');
+      $('.cell').addClass('draw shake');
       playSound(drawSound);
       return false;
     }
@@ -97,7 +97,7 @@ $(document).ready(function() {
     board = ['', '', '', '', '', '', '', '', ''];
     currentPlayer = 'X';
     gameActive = true;
-    $('.cell').text('').removeClass('winner draw');
+    $('.cell').text('').removeClass('winner draw shake');
     $('#message').text('');
     $('#turn').text(`Player ${currentPlayer}'s turn`);
     playSound(restartSound);
