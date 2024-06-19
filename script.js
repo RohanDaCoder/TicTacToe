@@ -2,6 +2,7 @@ $(document).ready(function() {
   let currentPlayer = 'X';
   let gameActive = true;
   let board = ['', '', '', '', '', '', '', '', ''];
+  let isMuted = false;
 
   const winningConditions = [
         [0, 1, 2],
@@ -20,8 +21,10 @@ $(document).ready(function() {
   const drawSound = document.getElementById('draw-sound');
 
   function playSound(sound) {
-    sound.currentTime = 0;
-    sound.play();
+    if (!isMuted) {
+      sound.currentTime = 0;
+      sound.play();
+    }
   }
 
   function checkWin() {
@@ -53,7 +56,8 @@ $(document).ready(function() {
     if (!board.includes('')) {
       gameActive = false;
       $('#message').text('Game is a draw!');
-      $('.cell').addClass('draw'); // Make all cells red
+      $('#game-board').addClass('shake');
+      $('.cell').addClass('draw');
       playSound(drawSound);
       return false;
     }
@@ -88,7 +92,7 @@ $(document).ready(function() {
   });
 
   $('#reset').click(function() {
-    if (board.every(cell => cell === '')) { // Check if all cells are already empty
+    if (board.every(cell => cell === '')) {
       return;
     }
     board = ['', '', '', '', '', '', '', '', ''];
@@ -99,5 +103,10 @@ $(document).ready(function() {
     $('.cell').text('').removeClass('winner draw');
     $('#game-board').removeClass('shake');
     playSound(restartSound);
+  });
+
+  $('#mute-button').click(function() {
+    isMuted = !isMuted;
+    $('#mute-icon').attr('src', isMuted ? '/assets/svg/muted.svg' : '/assets/svg/unmute.svg');
   });
 });

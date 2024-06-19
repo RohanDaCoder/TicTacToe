@@ -15,16 +15,16 @@ body {
     font-weight: bold;
     cursor: pointer;
     border: 2px solid #444;
-    transition: all 0.3s ease; /* Adding ease transition */
+    transition: background-color 0.3s ease;
     font-family: 'Space Mono', monospace;
 }
 
-.cell:not(.winner):not(.draw):hover {
-    background-color: #333; /* Only apply hover color if not winner or draw */
+.cell:hover:not(.winner):not(.draw) {
+    background-color: #333;
 }
 
 .cell.active {
-    background-color: #333; /* Adjust active color as needed */
+    background-color: #333;
 }
 
 .winner {
@@ -68,9 +68,33 @@ body {
     padding: 0.5rem 1rem;
     border-radius: 0.25rem;
     font-family: 'Space Mono', monospace;
-    transition: all 0.3s ease; /* Adding ease transition */
+    transition: background-color 0.3s ease;
 }
 
 .btn:hover {
-    background-color: #555; /* Adjust hover color as needed */
+    background-color: #444;
+}
+
+#mute-button {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0; /* Grayish white background */
+    border: 2px solid #444; /* Border */
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#mute-button:hover {
+    background-color: #e0e0e0;
+    transform: scale(1.1);
+}
+
+#mute-button img {
+    width: 60%;
+    height: 60%;
 }
