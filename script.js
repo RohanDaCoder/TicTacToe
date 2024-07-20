@@ -49,13 +49,13 @@ $(document).ready(function() {
       winningCondition.forEach(index => {
         $('.cell').eq(index).addClass('winner');
       });
-      $('#message').text(`Player ${currentPlayer} wins!`);
+      $('#text').text(`Player ${currentPlayer} wins!`);
       playSound(winSound);
       return true;
     }
     if (!board.includes('')) {
       gameActive = false;
-      $('#message').text('Game is a draw!');
+      $('#text').text('Game is a draw!');
       $('.cell').addClass('draw shake');
       playSound(drawSound);
       return false;
@@ -71,7 +71,7 @@ $(document).ready(function() {
 
   function handlePlayerChange() {
     currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-    $('#turn').text(`Player ${currentPlayer}'s turn`);
+    $('#text').text(`Player ${currentPlayer}'s turn`);
   }
 
   function handleResultValidation() {
@@ -98,16 +98,16 @@ $(document).ready(function() {
     currentPlayer = 'X';
     gameActive = true;
     $('.cell').text('').removeClass('winner draw shake');
-    $('#message').text('');
-    $('#turn').text(`Player ${currentPlayer}'s turn`);
+    $('#text').text('');
+    $('#text').text(`Player ${currentPlayer}'s turn`);
     playSound(restartSound);
   });
 
   $('#mute-button').click(function() {
     isMuted = !isMuted;
     const iconSrc = isMuted ?
-      'https://github.com/RohanDaCoder/TicTacToe/raw/main/assets/svg/muted.svg' :
-      'https://github.com/RohanDaCoder/TicTacToe/raw/main/assets/svg/unmute.svg';
+      '/assets/svg/muted.svg' :
+      '/assets/svg/unmute.svg';
     $('#mute-icon').attr('src', iconSrc);
   });
 });

@@ -8,12 +8,14 @@
   <link rel="stylesheet" href="/assets/tailwind.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&family=Space+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <!-- Add to homescreen for Chrome on Android -->
+  <meta name="mobile-web-app-capable" content="yes">
 </head>
 
 <body class="flex items-center justify-center h-screen bg-gray-900">
   <div>
     <h1 class="text-4xl font-bold text-center text-white mb-6">Tic Tac Toe</h1>
-    <div id="turn" class="text-center text-white mb-4 text-2xl">Player X's turn</div>
+    <div id="text" class="text-center text-white mb-4 text-2xl">Player X's turn</div>
     <div id="game-board" class="grid grid-cols-3 gap-2 mb-4">
       <div class="cell bg-gray-800 text-white"></div>
       <div class="cell bg-gray-800 text-white"></div>
@@ -25,22 +27,21 @@
       <div class="cell bg-gray-800 text-white"></div>
       <div class="cell bg-gray-800 text-white"></div>
     </div>
-    <div id="message" class="text-center text-white mb-4 text-2xl"></div>
     <button id="reset" class="btn bg-white text-black">Reset Game</button>
   </div>
 
   <!-- Sound effects -->
-  <audio id="win-sound" src="https://github.com/RohanDaCoder/TicTacToe/raw/main/assets/sounds/win.wav"></audio>
-  <audio id="restart-sound" src="https://github.com/RohanDaCoder/TicTacToe/raw/main/assets/sounds/restart.wav"></audio>
-  <audio id="cell-sound" src="https://github.com/RohanDaCoder/TicTacToe/raw/main/assets/sounds/cell.wav"></audio>
-  <audio id="draw-sound" src="https://github.com/RohanDaCoder/TicTacToe/raw/main/assets/sounds/draw.wav"></audio>
+  <audio id="win-sound" src="/assets/sounds/win.wav"></audio>
+  <audio id="restart-sound" src="/assets/sounds/restart.wav"></audio>
+  <audio id="cell-sound" src="/assets/sounds/cell.wav"></audio>
+  <audio id="draw-sound" src="/assets/sounds/draw.wav"></audio>
 
   <button id="mute-button" class="btn fixed bottom-4 left-4">
-    <img id="mute-icon" src="https://github.com/RohanDaCoder/TicTacToe/raw/main/assets/svg/unmute.svg" alt="Mute/Unmute">
+    <img id="mute-icon" src="/assets/svg/unmute.svg" alt="Mute/Unmute">
   </button>
 
   <script src="/assets/jquery-3.6.0.min.js"></script>
-  <script src="script.js"></script>
+  <script src="/script.js"></script>
 </body>
 
 </html>

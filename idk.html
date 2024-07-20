@@ -1,0 +1,102 @@
+import React, { useState } from 'react';
+
+const App = () => {
+  const [board, setBoard] = useState(Array(9).fill(''));
+  const [currentPlayer, setCurrentPlayer] = useState('X');
+  const [gameActive, setGameActive] = useState(true);
+  const [isMuted, setIsMuted] = useState(false);
+
+  const winningConditions = [
+    [0, 1, 2], [3, 4, 5], [6, 7, 8], // rows
+    [0, 3, 6], [1, 4, 7], [2, 5, 8], // columns
+    [0, 4, 8], [2, 4, 6]             // diagonals
+  ];
+
+  const playSound = (sound) => {
+    if (!isMuted) {
+      sound.currentTime = 0;
+      sound.play();
+    }
+  };
+
+  const handleCellClick = (index) => {
+    if (!gameActive || board[index] !== '') return;
+
+    const newBoard = [...board];
+    newBoard[index] = currentPlayer;
+    setBoard(newBoard);
+    playSound(document.getElementById('cell-sound'));
+    checkWin(newBoard, index);
+  };
+
+  const checkWin = (board, index) => {
+    for (let i = 0; i < winningConditions.length; i++) {
+      const [a, b, c] = winningConditions[i];
+      if (board[a] && board[a] === board[b] && board[a] === board[c]) {
+        setGameActive(false);
+        playSound(document.getElementById('win-sound'));
+        return;
+      }
+    }
+    if (!board.includes('')) {
+      setGameActive(false);
+      playSound(document.getElementById('draw-sound'));
+    } else {
+      setCurrentPlayer(currentPlayer === 'X' ? 'O' : 'X');
+    }
+  };
+
+  const handleResetGame = () => {
+    setBoard(Array(9).fill(''));
+    setCurrentPlayer('X');
+    setGameActive(true);
+    setIsMuted(false);
+    playSound(document.getElementById('restart-sound'));
+  };
+
+  const toggleMute = () => {
+    setIsMuted(!isMuted);
+    const iconSrc = isMuted
+      ? 'https://github.com/RohanDaCoder/TicTacToe/raw/main/assets/svg/muted.svg'
+      : 'https://github.com/RohanDaCoder/TicTacToe/raw/main/assets/svg/unmute.svg';
+    document.getElementById('mute-icon').src = iconSrc;
+  };
+
+  return (
+    <div className="flex items-center justify-center min-h-screen bg-gray-900 text-white">
+      <div className="text-center">
+        <h1 className="text-4xl font-bold mb-6">Tic Tac Toe</h1>
+        <div id="turn" className="mb-4 text-2xl">
+          Player {currentPlayer}'s turn
+        </div>
+        <div id="game-board" className="grid grid-cols-3 gap-2 mb-4">
+          {board.map((cell, index) => (
+            <div
+              key={index}
+              className={`cell bg-gray-800 flex items-center justify-center text-5xl font-bold cursor-pointer transition-colors duration-300 ${cell === 'X' ? 'text-green-500' : 'text-blue-500'} ${!gameActive ? (checkDraw() ? 'bg-red-500 text-white' : 'bg-green-500 text-white') : ''}`}
+              onClick={() => handleCellClick(index)}
+            >
+              {cell}
+            </div>
+          ))}
+        </div>
+        <div id="message" className="mb-4 text-2xl"></div>
+        <button id="reset" className="btn bg-white text-black" onClick={handleResetGame}>
+          Reset Game
+        </button>
+      </div>
+
+      {/* Sound effects */}
+      <audio id="win-sound" src="https://github.com/RohanDaCoder/TicTacToe/raw/main/assets/sounds/win.wav"></audio>
+      <audio id="restart-sound" src="https://github.com/RohanDaCoder/TicTacToe/raw/main/assets/sounds/restart.wav"></audio>
+      <audio id="cell-sound" src="https://github.com/RohanDaCoder/TicTacToe/raw/main/assets/sounds/cell.wav"></audio>
+      <audio id="draw-sound" src="https://github.com/RohanDaCoder/TicTacToe/raw/main/assets/sounds/draw.wav"></audio>
+
+      <button id="mute-button" className="btn fixed bottom-4 left-4" onClick={toggleMute}>
+        <img id="mute-icon" src="https://github.com/RohanDaCoder/TicTacToe/raw/main/assets/svg/unmute.svg" alt="Mute/Unmute" />
+      </button>
+    </div>
+  );
+};
+
+export default App;
