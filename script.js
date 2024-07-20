@@ -63,9 +63,13 @@ $(document).ready(function() {
     return null;
   }
 
+  function getCellColor() {
+    return currentPlayer === 'O' ? 'text-yellow-500' : 'text-indigo-500';
+  }
   function handleCellPlayed(clickedCell, clickedCellIndex) {
     board[clickedCellIndex] = currentPlayer;
     $(clickedCell).text(currentPlayer);
+    $(clickedCell).addClass(`transition-colors duration-300 ${getCellColor()}`)
     playSound(cellSound);
   }
 
@@ -85,7 +89,7 @@ $(document).ready(function() {
     const clickedCellIndex = $(this).index();
     if (board[clickedCellIndex] !== '' || !gameActive) {
       return;
-    }
+    };
     handleCellPlayed(this, clickedCellIndex);
     handleResultValidation();
   });
@@ -97,8 +101,8 @@ $(document).ready(function() {
     board = ['', '', '', '', '', '', '', '', ''];
     currentPlayer = 'X';
     gameActive = true;
-    $('.cell').text('').removeClass('winner draw shake');
     $('#text').text('');
+    $('.cell').text('').removeClass('winner draw shake text-yellow-500 text-indigo-500');
     $('#text').text(`Player ${currentPlayer}'s turn`);
     playSound(restartSound);
   });
