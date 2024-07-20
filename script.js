@@ -1,5 +1,4 @@
-$(document).ready(function() {
-  let currentPlayer = 'X';
+let currentPlayer = 'X';
   let gameActive = true;
   let board = ['', '', '', '', '', '', '', '', ''];
   let isMuted = false;
@@ -8,6 +7,7 @@ $(document).ready(function() {
     o: 0,
     draws: 0,
   };
+$(document).ready(function() {
   const winningConditions = [
         [0, 1, 2],
         [3, 4, 5],
