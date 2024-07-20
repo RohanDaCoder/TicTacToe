@@ -3,7 +3,11 @@ $(document).ready(function() {
   let gameActive = true;
   let board = ['', '', '', '', '', '', '', '', ''];
   let isMuted = false;
-
+  const scores = {
+    x: 0,
+    o: 0,
+    draws: 0,
+  };
   const winningConditions = [
         [0, 1, 2],
         [3, 4, 5],
@@ -47,9 +51,10 @@ $(document).ready(function() {
     if (roundWon) {
       gameActive = false;
       winningCondition.forEach(index => {
-        $('.cell').eq(index).addClass('winner');
+        $('.cell').eq(index).addClass(`winner`);
       });
       $('#text').text(`Player ${currentPlayer} wins!`);
+      currentPlayer === "X" ? scores.x++ : scores.o++;
       playSound(winSound);
       return true;
     }
@@ -57,6 +62,7 @@ $(document).ready(function() {
       gameActive = false;
       $('#text').text('Game is a draw!');
       $('.cell').addClass('draw shake');
+      scores.draws++;
       playSound(drawSound);
       return false;
     }
@@ -114,4 +120,7 @@ $(document).ready(function() {
       '/assets/svg/unmute.svg';
     $('#mute-icon').attr('src', iconSrc);
   });
+  $('#score').click(function(){
+    alert(`Player X's Score: ${scores.x}\nPlayer O's Score: ${scores.o}\nDraws: ${scores.draws}`)
+  })
 });
