@@ -1,12 +1,12 @@
 let currentPlayer = 'X';
-  let gameActive = true;
-  let board = ['', '', '', '', '', '', '', '', ''];
-  let isMuted = false;
-  const scores = {
-    x: 0,
-    o: 0,
-    draws: 0,
-  };
+let gameActive = true;
+let board = ['', '', '', '', '', '', '', '', ''];
+let isMuted = false;
+const scores = {
+  x: 0,
+  o: 0,
+  draws: 0,
+};
 $(document).ready(function() {
   const winningConditions = [
         [0, 1, 2],
@@ -72,6 +72,7 @@ $(document).ready(function() {
   function getCellColor() {
     return currentPlayer === 'O' ? 'text-yellow-500' : 'text-indigo-500';
   }
+
   function handleCellPlayed(clickedCell, clickedCellIndex) {
     board[clickedCellIndex] = currentPlayer;
     $(clickedCell).text(currentPlayer);
@@ -120,7 +121,7 @@ $(document).ready(function() {
       '/assets/svg/unmute.svg';
     $('#mute-icon').attr('src', iconSrc);
   });
-  $('#score').click(function(){
+  $('#score').click(function() {
     alert(`Player X's Score: ${scores.x}\nPlayer O's Score: ${scores.o}\nDraws: ${scores.draws}`)
   })
 });
