@@ -6,6 +6,7 @@ const scores = {
   x: 0,
   o: 0,
   draws: 0,
+  resets: 0,
 };
 $(document).ready(function() {
   const winningConditions = [
@@ -112,6 +113,7 @@ $(document).ready(function() {
     $('.cell').text('').removeClass('winner draw shake text-yellow-500 text-indigo-500');
     $('#text').text(`Player ${currentPlayer}'s turn`);
     playSound(restartSound);
+    scores.resets++;
   });
 
   $('#mute-button').click(function() {
@@ -122,6 +124,6 @@ $(document).ready(function() {
     $('#mute-icon').attr('src', iconSrc);
   });
   $('#score').click(function() {
-    alert(`Player X's Score: ${scores.x}\nPlayer O's Score: ${scores.o}\nDraws: ${scores.draws}`)
+    alert(`Player X's Score: ${scores.x}\nPlayer O's Score: ${scores.o}\nDraws: ${scores.draws}\nResets: ${scores.resets}`);
   })
 });
