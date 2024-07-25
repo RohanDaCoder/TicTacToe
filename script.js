@@ -1,5 +1,5 @@
 let currentPlayer = 'X';
-let gameActive = true;
+let isGameActive = true;
 let board = ['', '', '', '', '', '', '', '', ''];
 let isMuted = false;
 const scores = {
@@ -50,9 +50,9 @@ $(document).ready(function() {
       }
     }
     if (roundWon) {
-      gameActive = false;
+      isGameActive = false;
       winningCondition.forEach(index => {
-        $('.cell').eq(index).addClass(`winner`);
+        $('.cell').eq().addClass(`winner`);
       });
       $('#text').text(`Player ${currentPlayer} wins!`);
       currentPlayer === "X" ? scores.x++ : scores.o++;
@@ -60,7 +60,7 @@ $(document).ready(function() {
       return true;
     }
     if (!board.includes('')) {
-      gameActive = false;
+      isGameActive = false;
       $('#text').text('Game is a draw!');
       $('.cell').addClass('draw shake');
       scores.draws++;
@@ -70,14 +70,14 @@ $(document).ready(function() {
     return null;
   }
 
-  function getCellColor() {
+  function getCurrentPlayerColor() {
     return currentPlayer === 'O' ? 'text-yellow-500' : 'text-indigo-500';
   }
 
   function handleCellPlayed(clickedCell, clickedCellIndex) {
     board[clickedCellIndex] = currentPlayer;
     $(clickedCell).text(currentPlayer);
-    $(clickedCell).addClass(`transition-colors duration-300 ${getCellColor()}`)
+    $(clickedCell).addClass(`transition-colors duration-300 ${getCurrentPlayerColor()}`)
     playSound(cellSound);
   }
 
@@ -95,7 +95,7 @@ $(document).ready(function() {
 
   $('.cell').click(function() {
     const clickedCellIndex = $(this).index();
-    if (board[clickedCellIndex] !== '' || !gameActive) {
+    if (board[clickedCellIndex] !== '' || !isGameActive) {
       return;
     };
     handleCellPlayed(this, clickedCellIndex);
@@ -108,7 +108,7 @@ $(document).ready(function() {
     }
     board = ['', '', '', '', '', '', '', '', ''];
     currentPlayer = 'X';
-    gameActive = true;
+    isGameActive = true;
     $('#text').text('');
     $('.cell').text('').removeClass('winner draw shake text-yellow-500 text-indigo-500');
     $('#text').text(`Player ${currentPlayer}'s turn`);
@@ -118,10 +118,10 @@ $(document).ready(function() {
 
   $('#mute-button').click(function() {
     isMuted = !isMuted;
-    const iconSrc = isMuted ?
+    const iconUrl = isMuted ?
       '/assets/svg/muted.svg' :
       '/assets/svg/unmute.svg';
-    $('#mute-icon').attr('src', iconSrc);
+    $('#mute-icon').attr('src', iconUrl);
   });
   $('#score').click(function() {
     alert(`Player X's Score: ${scores.x}\nPlayer O's Score: ${scores.o}\nDraws: ${scores.draws}\nResets: ${scores.resets}`);
